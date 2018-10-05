@@ -1,8 +1,10 @@
 import * as React from 'react'
 import * as debounce from 'debounce'
-import { SearchParams } from '../../types'
+import { SearchParams, Materia } from '../../types'
+import Card from './card'
 
 export interface MateriasProps {
+  cardList: Materia[]
   changeFetchMateriais: (variables: Partial<SearchParams>) => {}
 }
 
@@ -24,10 +26,16 @@ export default class Materias extends React.Component<MateriasProps, MateriasSta
   }
 
   public render() {
+    const { cardList } = this.props
     const { filterInput } = this.state
     return (
       <div>
         <input value={filterInput} onChange={this.handleInputChange} />
+        <div className="w-100">
+          {(cardList || []).map(element => (
+            <Card materiaData={element} />
+          ))}
+        </div>
       </div>
     )
   }

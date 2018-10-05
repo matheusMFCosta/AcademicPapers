@@ -12,7 +12,7 @@ export interface SearchParams {
 export interface containerReducerState {
   searchParams: SearchParams
   activeTab: Containertabs
-  materias: Materias | {}
+  materias: Materias
 }
 
 export interface Materia {
@@ -33,6 +33,7 @@ export interface Materia {
   Evaluation: number
   CommentsTotal: number
   PositiveEvaluations: number
+  FilePreview: { FolderUrl: string }
   EvaluationState: number
   Tags: number
   HasBeenReported: boolean
