@@ -6,6 +6,7 @@ import Card from './card'
 export interface MateriasProps {
   cardList: Materia[]
   changeFetchMateriais: (variables: Partial<SearchParams>) => {}
+  onFavoriteButtonPress: (materia: Materia) => {}
 }
 
 export interface MateriasState {
@@ -26,14 +27,14 @@ export default class Materias extends React.Component<MateriasProps, MateriasSta
   }
 
   public render() {
-    const { cardList } = this.props
+    const { cardList, onFavoriteButtonPress } = this.props
     const { filterInput } = this.state
     return (
       <div>
         <input value={filterInput} onChange={this.handleInputChange} />
         <div className="w-100">
           {(cardList || []).map(element => (
-            <Card materiaData={element} />
+            <Card materiaData={element} onFavoriteButtonPress={onFavoriteButtonPress} />
           ))}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { Operation } from '../redux/utils'
 import axios from 'axios'
 import { assign } from './../redux/utils'
-import { Containertabs, containerReducerState, SearchParams } from '../types'
+import { Containertabs, containerReducerState, SearchParams, Materia } from '../types'
 
 export class changeFetchMateriais extends Operation {
   constructor(public payload: Partial<SearchParams>) {
@@ -45,5 +45,22 @@ export class handleChangetabs extends Operation {
   }
   public containerReducer(state: containerReducerState) {
     return assign(state, { activeTab: this.payload })
+  }
+}
+
+export class onFavoriteButtonPress extends Operation {
+  constructor(public payload: Materia) {
+    super()
+  }
+
+  public process(getState, dispatch) {
+    const Results: Materia[] = JSON.parse(localStorage.getItem('Results') || '{}')
+    if (Results[this.payload.Id]) {
+      delete Results[this.payload.Id]
+    } else {
+      Results[this.payload.Id] = this.payload
+    }
+
+    localStorage.setItem('Results', JSON.stringify(Results))
   }
 }
