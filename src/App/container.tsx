@@ -1,12 +1,19 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { fetchMateriais } from './actions'
+import { fetchMateriais, handleChangetabs, changeFetchMateriais } from './actions'
+import Tab from './components/tabs'
+import { globalState } from '../redux/reducers/reducers'
+import { Containertabs, SearchParams } from '../types'
+import Materias from './materias/materias'
 
-export interface ContainerProps {
+interface ContainerProps {
+  activetab: Containertabs
   fetchMateriais: () => {}
+  handleChangetabs: (newTab: Containertabs) => {}
+  changeFetchMateriais: (variables: Partial<SearchParams>) => {}
 }
 
-export interface ContainerState {}
+interface ContainerState {}
 
 class Container extends React.PureComponent<ContainerProps, ContainerState> {
   componentDidMount() {
@@ -14,19 +21,39 @@ class Container extends React.PureComponent<ContainerProps, ContainerState> {
   }
 
   public render() {
+    const { activetab, handleChangetabs, changeFetchMateriais } = this.props
+    const list: { id: Containertabs; label: string }[] = [
+      {
+        id: 'materiais',
+        label: 'Materias'
+      },
+      {
+        id: 'favoritos',
+        label: 'Favoritos'
+      }
+    ]
+
     return (
-      <div>
-        {' '}
-        <button>adasdas</button>{' '}
+      <div className="center">
+        <div className="w-60 g-h15 ba b--base-4 br1 bg-base-1 center g-mt12">
+          <div className="g-ml4 g-mt4 ">
+            <Tab list={list} initialTab={activetab} onClick={value => handleChangetabs(value)} />
+            <Materias changeFetchMateriais={changeFetchMateriais} />
+          </div>
+        </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = (state: globalState) => ({
+  activetab: state.containerReducer.activeTab
+})
 
 const mapDispatchToProps = dispatch => ({
-  fetchMateriais: () => dispatch(new fetchMateriais())
+  handleChangetabs: (newTab: Containertabs) => dispatch(new handleChangetabs(newTab)),
+  fetchMateriais: () => dispatch(new fetchMateriais()),
+  changeFetchMateriais: (variables: Partial<SearchParams>) => dispatch(new changeFetchMateriais(variables))
 })
 export default connect(
   mapStateToProps,
