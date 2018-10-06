@@ -57,6 +57,7 @@
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.5.2",
     "react-hot-loader": "^4.3.11",
+    "react-tooltip": "3.8.4",
     "redux": "4.0.0",
     "react-redux": "5.0.7",
     "sass-loader": "^7.1.0",
