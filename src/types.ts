@@ -13,6 +13,7 @@ export interface containerReducerState {
   searchParams: SearchParams
   activeTab: Containertabs
   materias: Materias
+  favoritesIds: string[]
 }
 
 export interface Materia {

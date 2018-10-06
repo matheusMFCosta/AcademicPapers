@@ -60,7 +60,18 @@ export class onFavoriteButtonPress extends Operation {
     } else {
       Results[this.payload.Id] = this.payload
     }
-
     localStorage.setItem('Results', JSON.stringify(Results))
+
+    dispatch(new onFavoriteButtonPressSuccess(Object.keys(Results)))
+  }
+}
+
+export class onFavoriteButtonPressSuccess extends Operation {
+  constructor(public payload: string[]) {
+    super()
+  }
+
+  public containerReducer(state: containerReducerState) {
+    return assign(state, { favoritesIds: this.payload })
   }
 }
