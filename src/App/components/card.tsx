@@ -4,6 +4,7 @@ import * as ReactTooltip from 'react-tooltip'
 
 export interface MaterialCardProps {
   materiaData: Materia
+  isFavorite: boolean
   onFavoriteButtonPress: (materia: Materia) => {}
 }
 
@@ -13,11 +14,11 @@ export default class MaterialCard extends React.Component<MaterialCardProps, Mat
   handleCardClick = () => (window.location.href = `https://www.passeidireto.com/arquivo/${this.props.materiaData.Id}`)
   handleFavoritButtonClick = e => {
     this.props.onFavoriteButtonPress(this.props.materiaData)
-    console.log(`22`)
     e.stopPropagation()
   }
 
   public render() {
+    const isFavorite = this.props.isFavorite
     const {
       Name,
       SubjectName,
@@ -26,28 +27,32 @@ export default class MaterialCard extends React.Component<MaterialCardProps, Mat
       AuthorName,
       PositiveEvaluations
     } = this.props.materiaData
-    ///http://chittagongit.com//images/all-star-icon/all-star-icon-9.jpg
+
     return (
-      <div className="dib w-third g-pa2" onClick={this.handleCardClick}>
+      <div className="dib w-third-l w-50-m w-100 g-pa2" onClick={this.handleCardClick}>
         <div className=" flex flex-column ba b--base-4 br1 bg-base-1  br2 shadow-hover">
           <div className="flex justify-between bg-base-2 g-pa2 ">
             <a data-tip={AuthorName}>
               <img className="br-100 g-w9 g-h9" src={AuthorImageUrl} />
             </a>
-            <div>
+            <div className="flex">
               {PositiveEvaluations >= 1 && (
-                <>
+                <div>
                   <img
                     className="g-pb1 g-w6 g-w6"
                     src={'https://www.iconsdb.com/icons/preview/guacamole-green/facebook-like-xl.png'}
                   />
                   <span className="g-pb2 c-base-4 g-f2 g-pr2">{PositiveEvaluations}</span>
-                </>
+                </div>
               )}
               <div onClick={this.handleFavoritButtonClick}>
                 <img
                   className="br-100 g-w8 g-h8"
-                  src={'https://www.iconsdb.com/icons/preview/dark-gray/star-8-xxl.png'}
+                  src={
+                    isFavorite
+                      ? `http://chittagongit.com//images/all-star-icon/all-star-icon-9.jpg`
+                      : 'http://www.iconsdb.com/icons/preview/dark-gray/star-8-xxl.png'
+                  }
                 />
               </div>
             </div>

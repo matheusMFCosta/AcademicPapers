@@ -15,7 +15,8 @@ const containerReducerInitialState: containerReducerState = {
     Order: 2
   },
   activeTab: 'materiais',
-  materias: {}
+  materias: {},
+  favoritesIds: []
 }
 
 export const containerReducer = (state: containerReducerState = containerReducerInitialState, action) => {
