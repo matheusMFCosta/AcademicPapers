@@ -4,6 +4,7 @@ import { SearchParams, Materia } from '../../types'
 import Pagination from 'rc-pagination'
 import 'rc-pagination/assets/index.css'
 import Card from '../components/card'
+const Search = require('./../../assets/images/search.png')
 
 export interface MateriasProps {
   totalResults: number
@@ -49,10 +50,7 @@ export default class Materias extends React.Component<MateriasProps, MateriasSta
       <div>
         <div className="flex-l justify-between-l  g-pt4">
           <div className="relative g-mt2 w-50-l w-100">
-            <img
-              className="absolute g-pb1 g-w5 g-w5 g-mt2 g-ml2"
-              src={'http://www.clker.com/cliparts/r/n/5/a/P/q/search-icon.svg.med.png'}
-            />
+            <img className="absolute g-pb1 g-w5 g-w5 g-mt2 g-ml2" src={Search} />
             <input
               className="g-pa2 g-pl8 br3 ba b--base-4 g-w15"
               value={filterInput}

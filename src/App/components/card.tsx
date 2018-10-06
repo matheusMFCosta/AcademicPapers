@@ -1,6 +1,9 @@
 import * as React from 'react'
 import { Materia } from '../../types'
 import * as ReactTooltip from 'react-tooltip'
+const facebookLike = require('./../../assets/images/facebook-like-xl.png')
+const ActiveStart = require('./../../assets/images/activeStar.jpg')
+const InactiveStar = require('./../../assets/images/inactiveStar.png')
 
 export interface MaterialCardProps {
   materiaData: Materia
@@ -38,22 +41,12 @@ export default class MaterialCard extends React.Component<MaterialCardProps, Mat
             <div className="flex">
               {PositiveEvaluations >= 1 && (
                 <div>
-                  <img
-                    className="g-pb1 g-w6 g-w6"
-                    src={'https://www.iconsdb.com/icons/preview/guacamole-green/facebook-like-xl.png'}
-                  />
+                  <img className="g-pb1 g-w6 g-w6" src={facebookLike} />
                   <span className="g-pb2 c-base-4 g-f2 g-pr2">{PositiveEvaluations}</span>
                 </div>
               )}
               <div onClick={this.handleFavoritButtonClick}>
-                <img
-                  className="br-100 g-w8 g-h8"
-                  src={
-                    isFavorite
-                      ? `http://chittagongit.com//images/all-star-icon/all-star-icon-9.jpg`
-                      : 'http://www.iconsdb.com/icons/preview/dark-gray/star-8-xxl.png'
-                  }
-                />
+                <img className="br-100 g-w8 g-h8" src={isFavorite ? ActiveStart : InactiveStar} />
               </div>
             </div>
           </div>
