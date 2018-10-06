@@ -1,5 +1,17 @@
+export type Containertabs = 'materiais' | 'favoritos'
+
+export interface SearchParams {
+  Query: string
+  ContentTypeIds: '%5B%5'
+  D: 1
+  PageNumber: number
+  PageSize: number
+  Order: 2
+}
+
 export interface containerReducerState {
-  activeTab: 'materiais' | 'favoritos'
+  searchParams: SearchParams
+  activeTab: Containertabs
   materias: Materias | {}
 }
 
