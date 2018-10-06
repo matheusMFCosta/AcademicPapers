@@ -18,9 +18,9 @@ export class fetchMateriais extends Operation {
     const { searchParams }: containerReducerState = getState().containerReducer
     const { data } = await axios({
       method: 'get',
-      url: `https://cors-anywhere.herokuapp.com/https://search-api.passeidireto.com/api/Search/GlobalSearch?Query=${
-        searchParams.Query
-      }&ContentTypeIds%5B%5D=1&PageNumber=${searchParams.PageNumber}&PageSize=${searchParams.PageSize}&Order=2`,
+      url: `/search?Query=${searchParams.Query}&ContentTypeIds%5B%5D=1&PageNumber=${searchParams.PageNumber}&PageSize=${
+        searchParams.PageSize
+      }&Order=2`,
       headers: {
         'Access-Control-Allow-Origin': '*'
       }
