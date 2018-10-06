@@ -4,8 +4,8 @@ import { fetchMateriais, handleChangetabs, changeFetchMateriais, onFavoriteButto
 import Tab from './components/tabs'
 import { globalState } from '../redux/reducers/reducers'
 import { Containertabs, SearchParams, Materia } from '../types'
-import Materias from './materias/materias'
-import Favoritos from './materias/favoritos'
+import Materias from './containers/materias'
+import Favoritos from './containers/favoritos'
 
 interface ContainerProps {
   totalResults: number
@@ -26,14 +26,7 @@ class Container extends React.PureComponent<ContainerProps, ContainerState> {
   }
 
   public render() {
-    const {
-      activetab,
-      handleChangetabs,
-      changeFetchMateriais,
-      cardList,
-      onFavoriteButtonPress,
-      favoritesIds
-    } = this.props
+    const { activetab, handleChangetabs, changeFetchMateriais, cardList, onFavoriteButtonPress } = this.props
     const tabsList: { id: Containertabs; label: string }[] = [
       {
         id: 'materiais',
@@ -46,7 +39,6 @@ class Container extends React.PureComponent<ContainerProps, ContainerState> {
     ]
 
     const favoriteIds = Object.keys(JSON.parse(window.localStorage.getItem('Results') || '{}'))
-    console.log(`favoritesIds`, favoritesIds)
     return (
       <div className="center">
         <section className="box-1 w-100" />

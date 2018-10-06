@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as debounce from 'debounce'
 import { SearchParams, Materia } from '../../types'
-import Card from './card'
+import Card from '../components/card'
 
 export interface FavoritosProps {
   changeFetchMateriais: (variables: Partial<SearchParams>) => {}

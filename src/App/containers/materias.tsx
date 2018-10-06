@@ -3,7 +3,7 @@ import * as debounce from 'debounce'
 import { SearchParams, Materia } from '../../types'
 import Pagination from 'rc-pagination'
 import 'rc-pagination/assets/index.css'
-import Card from './card'
+import Card from '../components/card'
 
 export interface MateriasProps {
   totalResults: number
