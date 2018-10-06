@@ -28,8 +28,8 @@ export default class Materias extends React.Component<MateriasProps, MateriasSta
   debounce = debounce
 
   handleInputChange = e => {
-    this.setState({ filterInput: e.target.value })
-    this.debounce(this.props.changeFetchMateriais({ Query: e.target.value }), 1000)()
+    this.setState({ filterInput: e.target.value, currentPage: 1 })
+    this.debounce(this.props.changeFetchMateriais({ Query: e.target.value, PageNumber: 1 }), 1000)()
   }
 
   handleChangePerpage = e => {
@@ -75,6 +75,7 @@ export default class Materias extends React.Component<MateriasProps, MateriasSta
             <Card
               materiaData={element}
               onFavoriteButtonPress={onFavoriteButtonPress}
+              //@ts-ignore
               isFavorite={favoriteIds.includes(`${element.Id}`)}
             />
           ))}

@@ -21,9 +21,9 @@
   "bugs": {
     "url": "https://github.com/vikpe/react-webpack-typescript-starter/issues"
   },
-  "homepage": "https://matheusmfcosta.github.io/AcademicPapers/",
+  "homepage": "http://matheusmfcosta.github.io/AcademicPapers/",
   "scripts": {
-    "build": "yarn run clean-dist && webpack -p --config=configs/webpack/prod.js",
+    "build": "yarn run clean-dist && webpack -p --config=configs/webpack/dev.js",
     "clean-dist": "rm -f -r -d dist",
     "lint": "yarn run lint:ts && yarn run lint:sass",
     "lint:ts": "tslint './src/**/*.ts*' --format stylish --force",

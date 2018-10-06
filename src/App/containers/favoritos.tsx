@@ -30,7 +30,7 @@ export default class Favoritos extends React.Component<FavoritosProps, Favoritos
   public render() {
     const { onFavoriteButtonPress } = this.props
     const { filterInput } = this.state
-
+    //@ts-ignore
     const localStorageResults = Object.values(JSON.parse(window.localStorage.getItem('Results') || '{}'))
     const ResultsId = Object.keys(JSON.parse(window.localStorage.getItem('Results') || '{}'))
     const cardsList = this.getFilteredItems(localStorageResults)
@@ -48,6 +48,7 @@ export default class Favoritos extends React.Component<FavoritosProps, Favoritos
             <Card
               materiaData={element}
               onFavoriteButtonPress={onFavoriteButtonPress}
+              //@ts-ignore
               isFavorite={ResultsId.includes(`${element.Id}`)}
             />
           ))}
