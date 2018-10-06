@@ -78,7 +78,7 @@ const mapDispatchToProps = dispatch => ({
   handleChangetabs: (newTab: Containertabs) => dispatch(new handleChangetabs(newTab)),
   fetchMateriais: () => dispatch(new fetchMateriais()),
   changeFetchMateriais: (variables: Partial<SearchParams>) => dispatch(new changeFetchMateriais(variables)),
-  onFavoriteButtonPress: (materia: Materia) => (console.log(`ddd`), dispatch(new onFavoriteButtonPress(materia)))
+  onFavoriteButtonPress: (materia: Materia) => dispatch(new onFavoriteButtonPress(materia))
 })
 export default connect(
   mapStateToProps,

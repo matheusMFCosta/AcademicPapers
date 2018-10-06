@@ -17,7 +17,7 @@ body {
   position: relative;
 }
 
-.box-1:before {
+.box-1::before {
   z-index: 0;
   content: '';
   background-image: url(http://resources.passeidireto.com/website-anonymous/images/home-v2/header-top-2.png);
@@ -30,7 +30,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.box-1:after {
+.box-1::after {
   z-index: 1;
   content: '';
   background-image: url(http://resources.passeidireto.com/website-anonymous/images/home-v2/header-top-3.png);

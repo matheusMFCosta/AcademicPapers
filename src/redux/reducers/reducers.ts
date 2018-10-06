@@ -15,6 +15,7 @@ const containerReducerInitialState: containerReducerState = {
     Order: 2
   },
   activeTab: 'materiais',
+  //@ts-ignore
   materias: {},
   favoritesIds: []
 }
